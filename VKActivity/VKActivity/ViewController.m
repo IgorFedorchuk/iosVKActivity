@@ -14,14 +14,24 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self setupUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Actions
+
+- (IBAction)shareButtonPressed:(id)sender
+{
+    
+}
+
+#pragma mark - Private
+
+- (void)setupUI
+{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"article_ic_share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareButtonPressed:)];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "VKSdk.h" 
 
 @interface ViewController ()
 
@@ -24,7 +25,20 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
+    NSArray *items = @[[UIImage imageNamed:@"article_ic_video_play"], @"Check out information about VK SDK" , [NSURL URLWithString:@"https://vk.com/dev/ios_sdk"]];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:@[[VKActivity new]]];
     
+    [activityViewController setValue:@"VK SDK" forKey:@"subject"];
+    if (VK_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
+        UIPopoverPresentationController *popover = activityViewController.popoverPresentationController;
+        popover.sourceView = self.view;
+        popover.barButtonItem = self.navigationItem.rightBarButtonItem;
+    }
+    
+    [self presentViewController:activityViewController animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Private

@@ -29,7 +29,7 @@
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:@[[VKActivity new]]];
     
     [activityViewController setValue:@"VK SDK" forKey:@"subject"];
-    if (VK_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    if (VK_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") && UIUserInterfaceIdiomPad == [[UIDevice currentDevice] userInterfaceIdiom])
     {
         UIPopoverPresentationController *popover = activityViewController.popoverPresentationController;
         popover.sourceView = self.view;
